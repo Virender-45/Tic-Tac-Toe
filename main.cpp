@@ -14,6 +14,37 @@ int main()
     char computer = 'O';
     bool running = true;
 
+    drawBoard(spaces);
+
+    while (running)
+    {
+        playerMove(spaces, player);
+        drawBoard(spaces);
+        if (checkWInner(spaces, player, computer))
+        {
+            running = false;
+            break;
+        }
+        else if (checkTie(spaces))
+        {
+            running = false;
+            break;
+        }
+
+        computerMove(spaces, computer);
+        drawBoard(spaces);
+        if (checkWInner(spaces, player, computer))
+        {
+            running = false;
+            break;
+        }
+        else if (checkTie(spaces))
+        {
+            running = false;
+            break;
+        }
+    }
+
     return 0;
 }
 
